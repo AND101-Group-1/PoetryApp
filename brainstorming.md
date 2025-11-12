@@ -9,20 +9,19 @@
 7. Search for historical events/provide users with a historical event that occured on the current date, in the past years.
 
 **Arely**:
-- reframing negative thoughts to positive ones
-- Something similar to the first idea can be fetching quotes and/or practice mindfulness
-- Cooking recipes
-- show flight statuses
-- small actions to take to take care of the environment
-- Fetch Disney characters using https://disneyapi.dev/
-- Some app to educate ourselves on animals 
+1. Reframing negative thoughts to positive ones
+2. Something similar to the first idea can be fetching quotes and/or practice mindfulness
+3. Cooking recipes
+4. Show flight statuses
+5. small actions to take to take care of the environment
+6. Fetch Disney characters using https://disneyapi.dev/
+7. Some app to educate ourselves on animals 
 
 **Prest**:
-- AI Study Bot
-- Finding nearest gyms around your location
-- Quiz about your favorite characters in fiction
-- An app that pays you depending on how many miles you travelled
-
+1. AI Study Bot
+2. Finding nearest gyms around your location
+3. Quiz about your favorite characters in fiction
+4. An app that pays you depending on how many miles you travelled
 
 **Ana**:
 1. News app -> filter news based on a topic
@@ -30,21 +29,19 @@
 3. Aquarium tracker -> lets you save facts of different fish species
 4. World Snack Explorer-> explore snacks from around the world
 
-
 **Eloy**:
 1. Movie app for latest movies of 2025 
 2. Weather app using a weather api 
 3. Food review app 
 
-
 ## Step 2a: Choose the top three
-Eloy (Weather review App, Quiz about your favorite characters)
-Arely (my 1st idea, aquarium finder, oetry)
-Ana (aquarium, star, poetry)
-Sam (star finder, poetry, book finder)
-Prest(World Snack Explorer, Some app to educate ourselves on animals)
+Eloy: weather review App, quiz about favorite characters
+Arely: my 1st idea, aquarium finder, poetry
+Ana: aquarium, star, poetry
+Sam: star, poetry
+Prest: world snack explorer, app to educate ourselves on animals
 
-**Top 3**: Star finder, poetry app, and aquarium tracker
+**Top 3**: Star Finder, Poetry App, and Aquarium Tracker
 
 
 ## Step 2b: Evaluate ideas
@@ -70,7 +67,7 @@ Prest(World Snack Explorer, Some app to educate ourselves on animals)
 
 **Scope**: We still have to research how challenging to use the API for this app is. If we have to strip down this app, it would still be an interesting app to build because the topic itself and the specific scenario at aquariums is interesting.
 
-### App#3: Daily Poetry App
+### App#3: Poetry App
 **Mobile**: The poetry app will provide the user with daily and quick access to new poems. Users will have the opportunity to discover new works and save them right on their phones.
 
 **Story**: The app has the opportunity to attract more people into poetry. Knowing where to start reading poetry can be a daunting, so this app can help people get into poetry. 
@@ -79,7 +76,7 @@ Prest(World Snack Explorer, Some app to educate ourselves on animals)
 
 **Habit**: The average user would open this app daily because of our feature to display a daily poem. Moreover, active users will use this app multiple times a day to discover and save new poems.
 
-**Scope**: The app may be technically challenging to build all the features we have defined; however, our group finds this app interesting even if we have to strip it down. For the first version we would prioritize the daily poem feature. Then, we would include filters based on authors, type, title, etc. Lastly, we want to create collections of poems based on a topic like seasonal or genre.
+**Scope**: The app may be technically challenging to build all the features we have defined; however, our group finds this app interesting even if we have to strip it down. For the first version we would prioritize the daily poem feature. Then, we would include filters based on authors, type, title, etc. Lastly, want the user to be able to "match" with a poem by submitting a quiz, and be able to favorite and take notes on poems.
 
 # Final idea: Poetry App
 
