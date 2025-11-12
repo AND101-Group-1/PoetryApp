@@ -9,13 +9,13 @@ Submitted by:
 - **Preston Blake**
 - **Samantha Milo**
 
-Time spent: **5** hours spent in total
+Time spent: **8** hours spent in total
 
 ## Summary
 
-This document provides an overview, project spec, and wireframes for our team's capstone project: An app that **short description of your app**
+This document provides an overview, project spec, and wireframes for our team's capstone project: An app that **provides users with daily poems, and allows them to search, favorite, and math with poems using the PoetryDB API.**
 
-If we had to describe this milestone in three (3) emojis, they would be: **emojis here**
+If we had to describe this milestone in three (3) emojis, they would be: **📚⚔️🐉**
 
 ## Milestone Requirements
 
