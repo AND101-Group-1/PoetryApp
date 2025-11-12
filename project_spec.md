@@ -22,7 +22,7 @@
 - **Story:** The app has the opportunity to attract more people into poetry. Knowing where to start reading poetry can be a daunting, so this app can help people get into poetry.
 - **Market:** The main users for this app are people who like reading poetry, and people just starting with it. In 2022, around 22 million adults in the US read poetry which makes it a large market. This number does not even include casual and new readers.
 - **Habit:** The average user would open this app daily because of our feature to display a daily poem. Moreover, active users will use this app multiple times a day to discover and save new poems.
-- **Scope:** The app may be technically challenging to build all the features we have defined; however, our group finds this app interesting even if we have to strip it down. For the first version we would prioritize the daily poem feature. Then, we would include filters based on authors, type, title, etc. Lastly, we want to create collections of poems based on a topic like seasonal or genre.
+- **Scope:** The app may be technically challenging to build all the features we have defined; however, our group finds this app interesting even if we have to strip it down. For the first version we would prioritize the daily poem feature. Then, we would include filters based on authors, type, title, etc. Lastly, we want the user to be able to "match" with a poem after taking a short quiz. We also want to add a note and favorite feature to the poem view.
 
 ## Product Spec
 
