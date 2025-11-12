@@ -71,13 +71,13 @@ Required Feature
 ## Wireframes
 
 <!-- Add picture of your hand sketched wireframes in this section -->
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/user-attachments/assets/191544d4-07e6-4dfe-8c81-71cf717aa766" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/user-attachments/assets/1e6e759e-13fd-4347-899b-8133425d1eb5" width=600>
 
 ### [BONUS] Interactive Prototype
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/user-attachments/assets/60b05b22-24dc-411d-9b2d-c4302b5af62f" width=600>
 
 ## Build Notes
 
