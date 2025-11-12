@@ -40,23 +40,33 @@ Stretch Features:
 - User can view poems from predefined collections
 - User can save poems to read them later
 
-### 2. Chosen API(s)
+### 2. Chosen API(s): PoetryDB
 
-- **list first API endpoint here**
-  - **list associated required feature here**
-  - ...
-- ...
+- Get daily poem
+  - User can see a randomly selected poem each day
+  - User can save the poem
+- Get poem
+  - User can get a poem by searching the title
+  - User can save the poem
+- Get author
+  - User can get the poems written by a specific author
 
 ### 3. User Interaction
 
 Required Feature
 
-- **list first user action here**
-  - => **list result of user action here**
+- **Get Daily Poem:** User opens app
+  - => Results in a randomly selected poem for that day
+ 
+- **Get poem**: User searches a poem title
+  - => Results displayed: either a poem is found or an error saying poem is not found
   - ...
-- **list second user action here**
-  - => **list result of user action here**
-  - ...
+ 
+- **Get author:** User filters poems based on author
+  - => Results show poems written by that author
+
+- **Get Poem:** User can save poem
+  - => Results show saved poems in a specific tab "Saved Poems" or "Favorites"
 
 ## Wireframes
 
