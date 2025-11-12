@@ -74,8 +74,10 @@ Required Feature
 <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
+<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
 
 ### [BONUS] Interactive Prototype
+<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
 
 ## Build Notes
 
