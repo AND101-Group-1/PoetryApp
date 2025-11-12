@@ -3,11 +3,13 @@
 # AND101 Milestone 1 - **Team/App Name**
 
 Submitted by:
-- **Team Member 1 Name Here**
-- **Team Member 2 Name Here**
-- **etc**
+- **Ana Herrera**
+- **Arely Martinez**
+- **Eloy Beucejour**
+- **Preston Blake**
+- **Samantha Milo**
 
-Time spent: **X** hours spent in total
+Time spent: **5** hours spent in total
 
 ## Summary
 
