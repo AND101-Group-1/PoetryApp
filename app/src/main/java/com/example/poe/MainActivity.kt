@@ -17,5 +17,10 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+            //instance of API client to access poetry database
+            val apiClient = PoetryApiClient()
+            apiClient.searchByTitle("Ozymandias") //to check if API is getting a poem , got to logcat
+
     }
 }
