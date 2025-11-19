@@ -5,39 +5,57 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".MainActivity">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/potdBtn"
         android:layout_width="128dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="P.O.T.D"
+        android:textStyle="bold"
+        android:elevation="10dp"
+        android:translationZ="6dp"
+        app:cornerRadius="20dp"
+        app:backgroundTint="@color/off_white"
+        android:textColor="@color/gray"
         app:layout_constraintEnd_toStartOf="@+id/searchBtn"
-        app:layout_constraintHorizontal_bias="0.384"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/searchBtn"
         android:layout_width="128dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="SEARCH"
+        android:textStyle="bold"
+        android:elevation="10dp"
+        android:translationZ="6dp"
+        app:cornerRadius="20dp"
+        app:backgroundTint="@color/slate"
+        android:textColor="@color/gray"
         app:layout_constraintEnd_toStartOf="@+id/favoritesBtn"
         app:layout_constraintHorizontal_bias="0.94"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/potdBtn"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/favoritesBtn"
         android:layout_width="128dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:textStyle="bold"
         android:text="FAVORITES"
+        android:elevation="10dp"
+        android:translationZ="6dp"
+        app:cornerRadius="20dp"
+        app:backgroundTint="@color/mauve"
+        android:textColor="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.943"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/searchBtn"
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
@@ -49,10 +67,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/potdBtn" />
-
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

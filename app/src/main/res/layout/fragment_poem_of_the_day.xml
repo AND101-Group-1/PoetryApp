@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".PoemOfTheDayFragment">
 
     <TextView
@@ -11,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:textColor="@color/off_white"
         android:text="Poem of the Day"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -20,10 +22,12 @@
 
     <TextView
         android:id="@+id/poemTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Title"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:text=""
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,10 +36,12 @@
 
     <TextView
         android:id="@+id/poemAuthor"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
+        android:textAlignment="center"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Author"
+        android:textColor="@color/off_white"
+        android:text=""
         android:textSize="18sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,22 +49,40 @@
         app:layout_constraintTop_toBottomOf="@+id/poemTitle" />
 
     <ScrollView
-        android:layout_width="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_width="350dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/poemAuthor">
+        app:layout_constraintTop_toBottomOf="@+id/poemAuthor"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/poemBody"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Loading..."
+            android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="16sp" />
     </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:elevation="12dp"
+        app:borderWidth="13dp"
+        app:backgroundTint="@color/mauve"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/heartimg"
+        app:tint="@color/gray" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
