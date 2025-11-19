@@ -8,8 +8,8 @@ import okhttp3.Headers
 /** API functionality. Algorithms for getRandomPoem, searchByTitle, and searchByAuthor**/
 class PoetryApiClient {
 
-        /**function to get 1 random poem**/
-        fun getRandomPoem() {
+    /**function to get 1 random poem**/
+    fun getRandomPoem(callback: (Poem?) -> Unit) {
 
         val client = AsyncHttpClient()
 
@@ -17,19 +17,31 @@ class PoetryApiClient {
             override fun onSuccess(statusCode: Int, headers: Headers, json: JsonHttpResponseHandler.JSON) {
                 Log.d("Poem", "response successful: $json")
 
+                try {
+                    val result = json.jsonArray
+                    val poemObject = result.getJSONObject(0)
 
-                val result = json.jsonArray
-                val poemObject = result.getJSONObject(0)
+                    //get poem elements
+                    val title = poemObject.getString("title")
+                    val author = poemObject.getString("author")
+                    val linesArray = poemObject.getJSONArray("lines")
 
-                //get poem elements
-                val title = poemObject.getString("title")
-                val author = poemObject.getString("author")
-                val linesArray = poemObject.getJSONArray("lines")
+                    val lines = ArrayList<String>()
+                    for (i in 0 until linesArray.length()) {
+                        lines.add(linesArray.getString(i))
+                    }
 
-                //print poem elements to logcat
-                Log.d("Poem", "Title: $title")
-                Log.d("Poem", "Author: $author")
-                Log.d("Poem", "Lines: $linesArray")
+                    val poem = Poem(title, author, lines)
+                    callback(poem)
+                    
+                    //print poem elements to logcat
+                    Log.d("Poem", "Title: $title")
+                    Log.d("Poem", "Author: $author")
+                    Log.d("Poem", "Lines: $linesArray")
+                } catch (e: Exception) {
+                    Log.e("Poem", "Error parsing poem", e)
+                    callback(null)
+                }
 
             }
 
@@ -40,13 +52,14 @@ class PoetryApiClient {
                 throwable: Throwable?
             ) {
                 Log.d("Poem Error", errorResponse)
+                callback(null)
             }
         })
 
     }
 
     /**function to get all poems by an author
-        it gets the title, lines (poem itself), linecount (number of lines in the poem)**/
+    it gets the title, lines (poem itself), linecount (number of lines in the poem)**/
     fun searchByAuthor(author: String){
         val client = AsyncHttpClient()
 
@@ -89,7 +102,7 @@ class PoetryApiClient {
     }
 
     /**function to search a poem by Title
-     it gets the author, title, lines (poem itself), linecount (number of lines in the poem) **/
+    it gets the author, title, lines (poem itself), linecount (number of lines in the poem) **/
     fun searchByTitle(title: String){
         val client = AsyncHttpClient()
 
@@ -124,9 +137,5 @@ class PoetryApiClient {
             }
         })
     }
-
-
-
-
 
 }

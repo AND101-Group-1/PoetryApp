@@ -1,6 +1,7 @@
 package com.example.poe
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -18,9 +19,14 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-            //instance of API client to access poetry database
-            val apiClient = PoetryApiClient()
-            apiClient.searchByTitle("Ozymandias") //to check if API is getting a poem , got to logcat
+        val potdBtn = findViewById<Button>(R.id.potdBtn)
 
+        potdBtn.setOnClickListener {
+            val fragment = PoemOfTheDayFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
     }
 }
