@@ -10,6 +10,8 @@
     <!-- The ID "poemDetailTitle" matches "binding.poemDetailTitle" in your Kotlin code -->
     <TextView
         android:id="@+id/poemDetailTitle"
+        android:textAlignment="center"
+        android:textColor="@color/slate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceHeadline5"
@@ -20,6 +22,8 @@
         android:id="@+id/poemDetailAuthor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/slate"
         android:layout_marginTop="4dp"
         android:textAppearance="?attr/textAppearanceSubtitle1"
         android:textStyle="italic"
@@ -37,6 +41,9 @@
             android:id="@+id/poemDetailLines"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/slate"
+            android:textAlignment="center"
+            android:text=""
             android:textAppearance="?attr/textAppearanceBody1"
             android:lineSpacingExtra="4dp"
             tools:text="Line 1 of the poem...\nLine 2 of the poem...\nAnd so on..." />
