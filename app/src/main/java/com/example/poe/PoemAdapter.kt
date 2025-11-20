@@ -15,8 +15,8 @@ class PoemAdapter (private var originalList: ArrayList<Poem>) : RecyclerView.Ada
 
     private var filteredList : MutableList<Poem> = originalList.toMutableList()
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
-        val title: TextView = view.findViewById(R.id.title)
-        val poet: TextView = view.findViewById(R.id.poet)
+        val title: TextView = view.findViewById(R.id.rowPoemTitle)
+        val poet: TextView = view.findViewById(R.id.rowPoemAuthor)
         fun bind(poem: Poem){
             title.text = poem.title
             poet.text = poem.author

@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         val potdBtn = findViewById<Button>(R.id.potdBtn)
+        val searchBtn = findViewById<Button>(R.id.searchBtn)
+        val favoritesBtn = findViewById<Button>(R.id.favoritesBtn)
 
         potdBtn.setOnClickListener {
             val fragment = PoemOfTheDayFragment()
@@ -28,9 +30,17 @@ class MainActivity : AppCompatActivity() {
                 .addToBackStack(null)
                 .commit()
         }
-        val searchButton = findViewById<Button>(R.id.searchBtn)
-        searchButton.setOnClickListener {
+
+        searchBtn.setOnClickListener {
             val fragment = SearchFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
+
+        favoritesBtn.setOnClickListener {
+            val fragment = FavoritesFragment()
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
                 .addToBackStack(null)
@@ -39,6 +49,3 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
-
-
-
