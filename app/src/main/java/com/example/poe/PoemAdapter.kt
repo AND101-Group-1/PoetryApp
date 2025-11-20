@@ -7,11 +7,9 @@ import android.widget.TextView
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import kotlin.collections.addAll
-import kotlin.text.clear
 
 /** Poem adapter used by the RecyclerView for the search and favorites screens. **/
-class PoemAdapter (private var originalList: ArrayList<Poem>) : RecyclerView.Adapter<PoemAdapter.ViewHolder>() {
+class PoemAdapter (private val originalList: List<Poem>) : RecyclerView.Adapter<PoemAdapter.ViewHolder>() {
 
     private var filteredList : MutableList<Poem> = originalList.toMutableList()
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
@@ -42,17 +40,6 @@ class PoemAdapter (private var originalList: ArrayList<Poem>) : RecyclerView.Ada
         notifyDataSetChanged()
     }
 
-    fun updateData(newPoems: List<Poem>) {
-        // 1. Clear the existing data
-        filteredList.clear()
-        originalList.clear()
-
-        // 2. Add the new data from the APIoriginalList.addAll(newPoems)
-        filteredList.addAll(newPoems)
-
-        // 3. Refresh the RecyclerView to show the new items
-        notifyDataSetChanged()
-    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PoemAdapter.ViewHolder {
