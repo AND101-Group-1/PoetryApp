@@ -30,12 +30,11 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     private fun initializeData() {
         // This is placeholder data. You would typically fetch this from an API or database.
         poems = listOf(
-            Poem("The Raven", "Edgar Allan Poe", ),
-            Poem("Ozymandias", "Percy Bysshe Shelley"),
-            Poem("Annabel Lee", "Edgar Allan Poe")
+            Poem("The Raven", "Edgar Allan Poe", listOf("Once upon a midnight dreary...")),
+            Poem("Ozymandias", "Percy Bysshe Shelley", listOf("I met a traveller from an antique land...")),
+            Poem("Annabel Lee", "Edgar Allan Poe", listOf("It was many and many a year ago..."))
         )
     }
-
     private fun setupRecyclerView(view: View) {
         recyclerView = view.findViewById(R.id.recyclerView) // Make sure you have a RecyclerView with this ID
         recyclerView.layoutManager = LinearLayoutManager(requireContext())

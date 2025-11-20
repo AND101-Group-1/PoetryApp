@@ -28,7 +28,14 @@ class MainActivity : AppCompatActivity() {
                 .addToBackStack(null)
                 .commit()
         }
-
+        val searchButton = findViewById<Button>(R.id.searchBtn)
+        searchButton.setOnClickListener {
+            val fragment = SearchFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
 
     }
 }
