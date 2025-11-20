@@ -36,8 +36,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             .build()
         // 2. Create the API Service
         val service = retrofit.create(PoetryApiService::class.java)
-        // 3. Call the API (Fetching 20 random poems for the initial view)
-        // Ensure your PoetryApiService has a method: @GET("random/20") fun getRandomPoems(): Call<List<Poem>>
         val call = service.getRandomPoems()
         call.enqueue(object : retrofit2.Callback<List<Poem>> {
             override fun onResponse(call: retrofit2.Call<List<Poem>>, response: retrofit2.Response<List<Poem>>) {
@@ -90,52 +88,58 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         val categorySpinner: Spinner = view.findViewById(R.id.category) // Ensure you have the spinner ID
 
         searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
-
-            // This runs when the user presses the Search button on the keyboard
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (!query.isNullOrEmpty()) {
                     val category = categorySpinner.selectedItem.toString()
-                    performSearch(query, category) // Call the API function
-                    searchView.clearFocus() // Hides the keyboard
+                    performSearch(query, category)
+                    searchView.clearFocus()
                 }
                 return true
             }
 
-            // This runs every time a letter is typed (Optional: leave empty if you only want search on submit)
             override fun onQueryTextChange(newText: String?): Boolean {
+                // Leave this false or empty.
+                // If you put API calls here, you will hit the API limit immediately.
                 return false
             }
         })
+
     }
     private fun performSearch(query: String, category: String) {
+        // 1. Setup Retrofit (if not already done globally)
         val retrofit = retrofit2.Retrofit.Builder()
-            .baseUrl("https://poetrydb.org/")
-            .addConverterFactory(retrofit2.converter.gson.GsonConverterFactory.create())
+            .baseUrl("https://poetrydb.org/")        .addConverterFactory(retrofit2.converter.gson.GsonConverterFactory.create())
             .build()
 
         val service = retrofit.create(PoetryApiService::class.java)
 
-        val call = if (category.equals("Poet", ignoreCase = true)) {
+        // 2. Decide which API endpoint to hit based on the Category Spinner
+        val call: retrofit2.Call<List<Poem>> = if (category.equals("Poet", ignoreCase = true)) {
+            // Searches the ENTIRE database for this author
             service.getPoemsByAuthor(query)
         } else {
+            // Searches the ENTIRE database for this title
             service.getPoemsByTitle(query)
         }
 
-
+        // 3. Execute the call
         call.enqueue(object : retrofit2.Callback<List<Poem>> {
             override fun onResponse(call: retrofit2.Call<List<Poem>>, response: retrofit2.Response<List<Poem>>) {
                 if (response.isSuccessful && response.body() != null) {
-                    // Convert to ArrayList and update adapter
-                    val results = ArrayList(response.body()!!)
-                    adapter.updateData(results)
+                    // 4. Get the NEW list from the server
+                    val newPoems = ArrayList(response.body()!!)
+
+                    // 5. Force the adapter to replace the old list with this new list
+                    adapter.updateData(newPoems)
                 } else {
-                    // Optional: Handle "No poems found"
+                    // Optional: Clear list or show "No results" if API returns nothing
                     adapter.updateData(arrayListOf())
+                    android.widget.Toast.makeText(context, "No poems found.", android.widget.Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: retrofit2.Call<List<Poem>>, t: Throwable) {
-                t.printStackTrace() // Handle network errors
+                android.widget.Toast.makeText(context, "Network Error", android.widget.Toast.LENGTH_SHORT).show()
             }
         })
     }
