@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val potdBtn = findViewById<Button>(R.id.potdBtn)
+        val searchBtn = findViewById<Button>(R.id.searchBtn)
 
         potdBtn.setOnClickListener {
             val fragment = PoemOfTheDayFragment()
@@ -29,6 +30,13 @@ class MainActivity : AppCompatActivity() {
                 .commit()
         }
 
+        searchBtn.setOnClickListener {
+            val fragment = SearchFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
 
     }
 }

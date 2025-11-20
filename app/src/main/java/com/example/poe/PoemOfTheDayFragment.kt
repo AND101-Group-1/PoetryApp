@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 /** Poem of the Day screen functionality using a Singleton holder. **/
 class PoemOfTheDayFragment : Fragment() {
@@ -27,7 +28,7 @@ class PoemOfTheDayFragment : Fragment() {
         val titleTextView = view.findViewById<TextView>(R.id.poemTitle)
         val authorTextView = view.findViewById<TextView>(R.id.poemAuthor)
         val bodyTextView = view.findViewById<TextView>(R.id.poemBody)
-
+        val heartButton = view.findViewById<FloatingActionButton>(R.id.favoriteBtn)
         // Try to get the poem from our in-memory holder first
         val todaysPoem = PoemOfTheDayHolder.getPoemForToday()
 
@@ -41,6 +42,11 @@ class PoemOfTheDayFragment : Fragment() {
             // If no valid poem exists, fetch a new one
             Log.d("PoemOfTheDay", "No poem for today in memory. Fetching a new one.")
             fetchAndDisplayNewPoem(titleTextView, authorTextView, bodyTextView)
+        }
+
+        // Add to favorites
+        heartButton.setOnClickListener {
+            todaysPoem?.let { FavoritesData.addFavorite(it) }
         }
     }
 
