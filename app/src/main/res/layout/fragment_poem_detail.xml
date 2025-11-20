@@ -24,6 +24,14 @@
         android:textAppearance="?attr/textAppearanceSubtitle1"
         android:textStyle="italic"
         tools:text="by Author Name" />
+        
+    <Button
+        android:id="@+id/addToFavoritesBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Favorite \u2661"
+        android:layout_marginTop="8dp"/>
+
 
     <!-- This ScrollView allows the poem text to be scrollable if it's long -->
     <ScrollView
