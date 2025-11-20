@@ -22,7 +22,7 @@ class FavoritesFragment : Fragment() {
         recyclerView = view.findViewById(R.id.favoritesRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-
+        adapter = PoemAdapter(FavoritesData.favorites) // Use the shared data list
         recyclerView.adapter = adapter
 
         return view
