@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.appcompat.widget.SearchView
+import android.widget.SearchView
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +16,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     private lateinit var searchView: SearchView
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: PoemAdapter
-    private var poems: ArrayList<Poem> = arrayListOf()
+    private lateinit var poems: List<Poem>
     private var searchCategory: String = "Poet" // Default search category
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,40 +28,20 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     private fun initializeData() {
-
-        // 1. Create Retrofit instance
-        val retrofit = retrofit2.Retrofit.Builder()
-            .baseUrl("https://poetrydb.org/")
-            .addConverterFactory(retrofit2.converter.gson.GsonConverterFactory.create())
-            .build()
-        // 2. Create the API Service
-        val service = retrofit.create(PoetryApiService::class.java)
-        val call = service.getRandomPoems()
-        call.enqueue(object : retrofit2.Callback<List<Poem>> {
-            override fun onResponse(call: retrofit2.Call<List<Poem>>, response: retrofit2.Response<List<Poem>>) {
-                if (response.isSuccessful && response.body() != null) {
-                    // Convert the immutable List from API to an ArrayList
-                    poems = ArrayList(response.body()!!)
-                    adapter.updateData(poems)
-                }
-            }
-            override fun onFailure(call: retrofit2.Call<List<Poem>>, t: Throwable) {
-                // Handle failure (e.g., log error or show toast)
-                t.printStackTrace()
-            }
-        })
+        // This is placeholder data. You would typically fetch this from an API or database.
+        poems = listOf(
+            Poem("The Raven", "Edgar Allan Poe", ),
+            Poem("Ozymandias", "Percy Bysshe Shelley"),
+            Poem("Annabel Lee", "Edgar Allan Poe")
+        )
     }
 
-
-
     private fun setupRecyclerView(view: View) {
-        recyclerView = view.findViewById(R.id.recyclerView)
+        recyclerView = view.findViewById(R.id.recyclerView) // Make sure you have a RecyclerView with this ID
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        // Initialize adapter with the empty list first
         adapter = PoemAdapter(poems)
         recyclerView.adapter = adapter
     }
-
 
     private fun setupSpinner(view: View) {
         val spinner: Spinner = view.findViewById(R.id.category)
@@ -85,63 +65,18 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private fun setupSearchView(view: View) {
         searchView = view.findViewById(R.id.searchView)
-        val categorySpinner: Spinner = view.findViewById(R.id.category) // Ensure you have the spinner ID
-
-        searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                if (!query.isNullOrEmpty()) {
-                    val category = categorySpinner.selectedItem.toString()
-                    performSearch(query, category)
-                    searchView.clearFocus()
-                }
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(query: String?): Boolean {
+                // FIX: Pass both the query and the selected category to the filter
+                adapter.filter(query ?: "", searchCategory)
                 return true
             }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                // Leave this false or empty.
-                // If you put API calls here, you will hit the API limit immediately.
-                return false
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // FIX: Left empty is fine if you don't need to handle submit explicitly
+                return false // Return false to let the SearchView perform the default action (if any)
             }
         })
-
+        // FIX: Removed extra closing brace that was here
     }
-    private fun performSearch(query: String, category: String) {
-        // 1. Setup Retrofit (if not already done globally)
-        val retrofit = retrofit2.Retrofit.Builder()
-            .baseUrl("https://poetrydb.org/")        .addConverterFactory(retrofit2.converter.gson.GsonConverterFactory.create())
-            .build()
-
-        val service = retrofit.create(PoetryApiService::class.java)
-
-        // 2. Decide which API endpoint to hit based on the Category Spinner
-        val call: retrofit2.Call<List<Poem>> = if (category.equals("Poet", ignoreCase = true)) {
-            // Searches the ENTIRE database for this author
-            service.getPoemsByAuthor(query)
-        } else {
-            // Searches the ENTIRE database for this title
-            service.getPoemsByTitle(query)
-        }
-
-        // 3. Execute the call
-        call.enqueue(object : retrofit2.Callback<List<Poem>> {
-            override fun onResponse(call: retrofit2.Call<List<Poem>>, response: retrofit2.Response<List<Poem>>) {
-                if (response.isSuccessful && response.body() != null) {
-                    // 4. Get the NEW list from the server
-                    val newPoems = ArrayList(response.body()!!)
-
-                    // 5. Force the adapter to replace the old list with this new list
-                    adapter.updateData(newPoems)
-                } else {
-                    // Optional: Clear list or show "No results" if API returns nothing
-                    adapter.updateData(arrayListOf())
-                    android.widget.Toast.makeText(context, "No poems found.", android.widget.Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: retrofit2.Call<List<Poem>>, t: Throwable) {
-                android.widget.Toast.makeText(context, "Network Error", android.widget.Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
-
 }
