@@ -6,12 +6,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 /** Poem of the Day screen functionality using a Singleton holder. **/
 class PoemOfTheDayFragment : Fragment() {
+
+    private lateinit var favoritesBtn: Button
+    private var currentPoem: Poem? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,9 +33,10 @@ class PoemOfTheDayFragment : Fragment() {
         val titleTextView = view.findViewById<TextView>(R.id.poemTitle)
         val authorTextView = view.findViewById<TextView>(R.id.poemAuthor)
         val bodyTextView = view.findViewById<TextView>(R.id.poemBody)
-        val heartButton = view.findViewById<FloatingActionButton>(R.id.favoriteBtn)
-        // Try to get the poem from our in-memory holder first
-        val todaysPoem = PoemOfTheDayHolder.getPoemForToday()
+        favoritesBtn = view.findViewById(R.id.addToFavoritesBtn)
+        
+        // Initially disable button until poem loads
+        favoritesBtn.isEnabled = false
 
         if (todaysPoem != null) {
             // If a valid poem for today exists, just display it
@@ -59,19 +65,41 @@ class PoemOfTheDayFragment : Fragment() {
         client.getRandomPoem { newPoem ->
 
             activity?.runOnUiThread {
-                if (newPoem != null) {
-                    // 1. Display the new poem
-                    titleTextView.text = newPoem.title
-                    authorTextView.text = "by ${newPoem.author}"
-                    bodyTextView.text = newPoem.lines.joinToString("\n")
-
-                    // 2. IMPORTANT: Update singleton holder with the new poem
-                    PoemOfTheDayHolder.updatePoem(newPoem)
-                    Log.d("PoemOfTheDay", "New poem fetched and saved to memory holder.")
+                if (poem != null) {
+                    currentPoem = poem
+                    titleTextView.text = poem.title
+                    authorTextView.text = "by ${poem.author}"
+                    bodyTextView.text = poem.lines.joinToString("\n")
+                    
+                    favoritesBtn.isEnabled = true
+                    updateFavoriteButton()
                 } else {
                     // Handle API failure
                     bodyTextView.text = "Failed to load poem."
                 }
+            }
+        }
+        
+        favoritesBtn.setOnClickListener {
+            if (currentPoem != null) {
+                if (FavoritesData.favorites.contains(currentPoem)) {
+                    FavoritesData.favorites.remove(currentPoem)
+                    Toast.makeText(context, "Removed from Favorites", Toast.LENGTH_SHORT).show()
+                } else {
+                    FavoritesData.favorites.add(currentPoem!!)
+                    Toast.makeText(context, "Added to Favorites", Toast.LENGTH_SHORT).show()
+                }
+                updateFavoriteButton()
+            }
+        }
+    }
+    
+    private fun updateFavoriteButton() {
+        if (currentPoem != null) {
+            if (FavoritesData.favorites.contains(currentPoem)) {
+               favoritesBtn.text = "Unfavorite \u2665"
+            } else {
+                favoritesBtn.text = "Favorite \u2661"
             }
         }
     }
