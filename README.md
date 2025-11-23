@@ -5,7 +5,7 @@
 Submitted by:
 - **Ana Herrera**
 - **Arely Martinez**
-- **Eloy Beucejour**
+- **Eloy Beaucejour**
 - **Preston Blake**
 - **Samantha Milo**
 

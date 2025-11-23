@@ -28,12 +28,8 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     private fun initializeData() {
-        // This is placeholder data. You would typically fetch this from an API or database.
-        poems = listOf(
-            Poem("The Raven", "Edgar Allan Poe", ),
-            Poem("Ozymandias", "Percy Bysshe Shelley"),
-            Poem("Annabel Lee", "Edgar Allan Poe")
-        )
+        // Start with an empty list as requested
+        poems = listOf()
     }
 
     private fun setupRecyclerView(view: View) {
@@ -51,14 +47,14 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                // FIX: Use the selected item to guide the search
+                // Use the selected item to guide the search
                 searchCategory = parent.getItemAtPosition(position).toString()
                 // Optional: Trigger a new search when the category changes
                 adapter.filter(searchView.query.toString(), searchCategory)
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
-                // FIX: Left empty to prevent crash
+                // Left empty to prevent crash
             }
         }
     }
@@ -67,16 +63,15 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         searchView = view.findViewById(R.id.searchView)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(query: String?): Boolean {
-                // FIX: Pass both the query and the selected category to the filter
+                // Pass both the query and the selected category to the filter
                 adapter.filter(query ?: "", searchCategory)
                 return true
             }
 
             override fun onQueryTextSubmit(query: String?): Boolean {
-                // FIX: Left empty is fine if you don't need to handle submit explicitly
+                // Left empty is fine if you don't need to handle submit explicitly
                 return false // Return false to let the SearchView perform the default action (if any)
             }
         })
-        // FIX: Removed extra closing brace that was here
     }
 }
