@@ -1,7 +1,7 @@
 package com.example.poe
 /** This object stores the favorite poems array. **/
 object FavoritesData {
-    val favorites = mutableListOf<Poem>()
+    val favorites = ArrayList<Poem>()
 
     fun addFavorite(poem: Poem) {
         // Avoid duplicates

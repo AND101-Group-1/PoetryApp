@@ -9,6 +9,7 @@
         android:id="@+id/search"
         android:layout_width="180dp"
         android:layout_height="50dp"
+        android:layout_marginTop="16dp"
         android:text="Search By"
         android:textColor="@color/slate"
         android:textSize="40sp"
@@ -22,38 +23,35 @@
         android:layout_width="110dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
-        android:background="@color/slate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.179"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.03" />
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="140dp"
         android:layout_height="40dp"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/slate"
+        android:layout_marginTop="32dp"
         android:queryBackground="@color/slate"
         android:queryHint="Search Poet or Poem"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.031"
         app:layout_constraintStart_toEndOf="@+id/category"
         app:layout_constraintTop_toBottomOf="@+id/search" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="300dp"
-        android:layout_height="500dp"
-        android:background="@color/slate"
+        android:layout_width="296dp"
+        android:layout_height="567dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.469"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView"
-        app:layout_constraintVertical_bias="0.358" />
+        app:layout_constraintVertical_bias="0.724" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
