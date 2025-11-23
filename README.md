@@ -1,6 +1,6 @@
 <!-- (This is a comment) INSTRUCTIONS: Go through this page and fill out any **bolded** entries with their correct values.-->
 
-# AND101 Milestone 2 - **Poetry-App**
+# AND101 Project - **Poetry-App**
 
 Submitted by:
 - **Ana Herrera**
@@ -29,11 +29,11 @@ The following REQUIRED files are included:
 - [x] Updated 📄 `project_spec.md`, which contains:
   - [X] App Overview (Milestone 1)
   - [X] App Spec (Milestone 1)
-  - [ ] Checked off 2+ completed features
-  - [ ] 2+ Videos/GIFs of build progress
+  - [X] Checked off 2+ completed features
+  - [X] 2+ Videos/GIFs of build progress
 
-- [ ] Our 🎥 Demo Video
-  - [ ] We have also added the Demo Video Link to the Group Info Form on the course portal.
+- [X] Our 🎥 Demo Video
+  - [X] We have also added the Demo Video Link to the Group Info Form on the course portal.
 
 The following EXTRA features are implemented:
 
@@ -43,7 +43,7 @@ The following EXTRA features are implemented:
 
 Here's a video that demos all of the app's implemented features:
 
-<img src='Poetry-App-Updated.gif' title='Video Demo' width='' alt='Video Demo' />
+<img src='PoetryAppFInal.gif' title='Video Demo' width='' alt='Video Demo' />
 
 VIDEO created with **Ezgif.com**
 
