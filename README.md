@@ -1,6 +1,6 @@
 <!-- (This is a comment) INSTRUCTIONS: Go through this page and fill out any **bolded** entries with their correct values.-->
 
-# AND101 Project - **Poetry-App**
+# AND101 Project - **Poetri**
 
 Submitted by:
 - **Ana Herrera**
@@ -13,7 +13,7 @@ Time spent: **10** hours spent in total
 
 ## Summary
 
-This document provides a summary of our project building process for our app, **Poetry App**
+This document provides a summary of our project building process for our app, **Poetri**
 
 ## Milestone Requirements
 
